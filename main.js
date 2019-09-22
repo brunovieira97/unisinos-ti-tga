@@ -3,6 +3,7 @@ const rl = require('readline-sync');
 
 const ppm = require('compressjs').PPM;
 const bwt = require('compressjs').BWTC;
+const crc = require('crc').crc32;
 
 const alice29 = './texts/alice29.txt';
 const c_alice29 = "./texts/c_alice29.txt";
@@ -13,6 +14,9 @@ mainLoop();
 
 function mainLoop(){
     switch (readOption()){
+        case '0':
+            console.log('Closing...');
+            break;
         case '1':
             compress(true,1);
             break;
@@ -59,6 +63,10 @@ function compressBWT(compressedFile,isAlice){
             else compress(isAlice);
         });
     });
+}
+
+function calculateCRC(file){
+    console.log(crc(fs.readFileSync('README.md', 'utf8')));
 }
 
 function compress(isAlice, step = 0){

@@ -1,0 +1,24 @@
+{
+  "name": "file-compress",
+  "version": "1.0.0",
+  "description": "Trabalho GA Teoria da Informação",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ohidalgojr/file-compress.git"
+  },
+  "author": "Orlando Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ohidalgojr/file-compress/issues"
+  },
+  "homepage": "https://github.com/ohidalgojr/file-compress#readme",
+  "dependencies": {
+    "compressjs": "^1.0.3",
+    "crc": "^3.8.0",
+    "readline-sync": "^1.4.10"
+  }
+}
