@@ -1,5 +1,5 @@
 # file-compress
-Trabalho do GA de Teoria da Informação
+Trabalho do GA de Teoria da Informação (2019/2)
 
 Recomendado utilizar a [última versão do Node](https://nodejs.org/en/)
 
