@@ -3,7 +3,7 @@ const rl = require('readline-sync')
 
 const ppm = require('compressjs').PPM;
 const bwt = require('compressjs').BWTC;
-const crc = require('crc').crc32;
+const crc = require('crc').crc8;
 
 const alice29 = './texts/alice29.txt';
 const c_alice29 = "./texts/c_alice29.txt";
@@ -38,7 +38,7 @@ function readOption(){
     return rl.question(`Options:
     1 - Encode alice29.txt
     2 - Decode alice29.txt
-    3 - Enconde sum
+    3 - Encode sum
     4 - Decode sum
     0 - Close \n`);
 }
@@ -46,7 +46,7 @@ function readOption(){
 function compressPPM(originalFile,compressedFile,isAlice){
     fs.readFile(originalFile, (err,data) => {  
         const buffer =  Buffer.from(data);
-        console.log(`CRC32 de ${originalFile} => ${crc(buffer.slice(0,8))}`);         
+        console.log(`CRC8 of ${originalFile} => ${crc(buffer.slice(0,8))}`);         
         const compressed = ppm.compressFile(buffer);
         fs.writeFile(compressedFile, compressed,'utf-8', err => {
             if (err) throw `Could not compress ${originalFile} with PPM`;
@@ -67,8 +67,8 @@ function compressBWT(compressedFile,isAlice){
 }
 
 function compress(isAlice, step = 0){
-    if (step == 0) return;
-
+	if (step == 0) return;
+	
     const originalFile = isAlice ? alice29 : sum;
     const compressedFile = isAlice ? c_alice29 : c_sum;
 
@@ -94,7 +94,7 @@ function decompressPPM(originalFile,isAlice){
         fs.writeFile(originalFile, result, 'utf-8',err => {
            if (err) throw `Could not decompress ${originalFile} with PPM`;
            else 
-            console.log(`CRC32 de ${originalFile} => ${crc(result.slice(0,8))}`);
+            console.log(`CRC8 of ${originalFile} => ${crc(result.slice(0,8))}`);
             decompress(isAlice);
         });
     });
